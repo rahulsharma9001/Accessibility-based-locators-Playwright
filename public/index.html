@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessibility Locator POC</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Playwright POC</p>
+        <h1 id="page-title">Accessibility-first locator demo</h1>
+        <p class="intro">
+          This sample app is intentionally built for automation through roles,
+          labels, names, and other accessible contracts instead of brittle DOM selectors.
+        </p>
+      </section>
+
+      <section class="panel" aria-labelledby="signup-heading">
+        <div class="panel-heading">
+          <h2 id="signup-heading">Newsletter signup</h2>
+          <p>Tests target the form the same way users and assistive technologies do.</p>
+        </div>
+
+        <form id="signup-form" aria-describedby="signup-help" data-pw="signup-form">
+          <p id="signup-help" class="assistive-copy">
+            Enter your details and preferred plan to enable the demo submit action.
+          </p>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>Full name</span>
+              <input
+                id="full-name"
+                name="fullName"
+                type="text"
+                autocomplete="name"
+                data-pw="full-name-input"
+              />
+            </label>
+
+            <label class="field">
+              <span>Email address</span>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                data-pw="email-input"
+              />
+            </label>
+          </div>
+
+          <fieldset class="radio-group">
+            <legend>Plan</legend>
+
+            <label>
+              <input type="radio" name="plan" value="Starter" data-pw="plan-starter" />
+              <span>Starter</span>
+            </label>
+
+            <label>
+              <input type="radio" name="plan" value="Pro" data-pw="plan-pro" />
+              <span>Pro</span>
+            </label>
+          </fieldset>
+
+          <label class="checkbox">
+            <input id="terms" type="checkbox" data-pw="terms-checkbox" />
+            <span>I agree to the automation demo terms</span>
+          </label>
+
+          <div class="actions">
+            <button id="submit-button" type="submit" disabled data-pw="join-waitlist-button">
+              Join waitlist
+            </button>
+            <button id="reset-button" type="button" data-pw="reset-form-button">Reset form</button>
+          </div>
+        </form>
+
+        <section class="status-card" aria-labelledby="status-heading">
+          <h3 id="status-heading">Submission status</h3>
+          <div id="form-status" role="status" aria-live="polite" data-pw="form-status">
+            Waiting for input
+          </div>
+        </section>
+      </section>
+
+      <section class="panel" aria-labelledby="catalog-heading">
+        <div class="panel-heading">
+          <h2 id="catalog-heading">Product catalog</h2>
+          <p>
+            This area demonstrates scoped locators inside repeated UI components.
+          </p>
+        </div>
+
+        <ul class="catalog" aria-label="Products">
+          <li class="product-card" data-pw="product-card">
+            <article aria-labelledby="product-alpha" data-product-name="A11y Audit Pack">
+              <h3 id="product-alpha">A11y Audit Pack</h3>
+              <p>Accessible design checks for critical workflows.</p>
+              <button type="button" data-pw="add-to-cart-button">Add to cart</button>
+            </article>
+          </li>
+
+          <li class="product-card" data-pw="product-card">
+            <article aria-labelledby="product-beta" data-product-name="Locator Guardrails Kit">
+              <h3 id="product-beta">Locator Guardrails Kit</h3>
+              <p>Shared selector standards for long-lived Playwright suites.</p>
+              <button type="button" data-pw="add-to-cart-button">Add to cart</button>
+            </article>
+          </li>
+
+          <li class="product-card" data-pw="product-card">
+            <article
+              aria-labelledby="product-gamma"
+              data-product-name="Regression Snapshot Bundle"
+            >
+              <h3 id="product-gamma">Regression Snapshot Bundle</h3>
+              <p>Visual and accessibility checks for release confidence.</p>
+              <button type="button" data-pw="add-to-cart-button">Add to cart</button>
+            </article>
+          </li>
+        </ul>
+
+        <div id="cart-status" role="status" aria-live="polite" data-pw="cart-status">
+          Cart is empty
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "playwright-accessibility-poc",
+  "version": "1.0.0",
+  "description": "POC framework demonstrating accessibility-based locators in Playwright.",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:contracts": "playwright test tests/accessibility-contracts.spec.js",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "show-report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.53.0"
+  }
+}
